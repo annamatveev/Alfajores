@@ -9,4 +9,7 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
+export const LOAD_GOT_DATA = 'boilerplate/App/LOAD_GOT_DATA';
+export const LOAD_GOT_DATA_SUCCESS = 'boilerplate/App/LOAD_GOT_DATA_SUCCESS';
+export const LOAD_GOT_DATA_ERROR = 'boilerplate/App/LOAD_GOT_DATA_ERROR';
 export const DEFAULT_LOCALE = 'en';

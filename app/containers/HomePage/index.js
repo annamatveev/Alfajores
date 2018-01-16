@@ -2,23 +2,75 @@
  * HomePage
  *
  * This is the first thing users see of our App, at the '/' route
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a necessity for you then you can refactor it and remove
- * the linting exception.
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+import injectSaga from 'utils/injectSaga';
+import { makeSelectGOTData, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+import { loadGOTData } from '../App/actions';
+import saga from './saga';
+import Info from "../../components/Info";
+
+export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    this.props.onLoad();
+  }
+
   render() {
+    const { loading, error, data } = this.props;
+    const GOTDataListProps = {
+      loading,
+      error,
+      data,
+    };
+
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <article>
+        <Helmet>
+          <title>Home Page</title>
+          <meta name="description" content="A React.js Boilerplate application homepage" />
+        </Helmet>
+        <div>
+          <Info {...GOTDataListProps}/>
+        </div>
+      </article>
     );
   }
 }
+
+HomePage.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool,
+  ]),
+  data: PropTypes.object,
+};
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onLoad: () => dispatch(loadGOTData()),
+  };
+}
+
+const mapStateToProps = createStructuredSelector({
+  data: makeSelectGOTData(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+});
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withSaga = injectSaga({ key: 'home', saga });
+
+export default compose(
+  withSaga,
+  withConnect,
+)(HomePage);
