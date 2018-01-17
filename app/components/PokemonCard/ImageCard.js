@@ -7,6 +7,7 @@ const PokemonImageCardWrapper = styled.div`
   flex-direction: column;
   margin: 10px;
 `;
+
 const PokemonImageWrapper = styled.div`
 
 `;
@@ -20,9 +21,7 @@ const PokemonNumWrapper = styled.div`
 
 const ImageCard = ({ image, number }) => (
     <PokemonImageCardWrapper>
-      <PokemonImageWrapper>
-        <img src={image}/>
-      </PokemonImageWrapper>
+      <img src={image}/>
       <PokemonNumWrapper>
         {number}
       </PokemonNumWrapper>

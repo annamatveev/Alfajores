@@ -11,7 +11,7 @@ const PokemonCardWrapper = styled.div`
   flex-direction: column;
   width: 450px;
   border-radius: 10px;
-  border: 2px solid #e56464;
+  border: 2px solid #${(props) => props.color};
   overflow: hidden;  
     
   transition: transform .5s;
@@ -34,7 +34,7 @@ const PokemonInfoWrapper = styled.div`
 `;
 
 const PokemonNameWrapper = styled.div`
-  background-color: #e56464;
+  background-color: #${(props) => props.color};
   text-transform: uppercase;
   color: white;
   letter-spacing: 2px;
@@ -45,9 +45,30 @@ const PokemonNameWrapper = styled.div`
   width: 100%;
 `;
 
+function generateColor(type) {
+  switch (type) {
+    case 'Grass':
+      return 'a5c4a2';
+    case 'Fire':
+      return 'ef6969';
+    case 'Flying':
+      return '62ace5';
+    case 'Water':
+      return '349ced';
+    case 'Bug':
+      return '8ba88a';
+    case 'Electric':
+      return 'd6be66';
+    case 'Poison':
+      return 'e599bd';
+    default:
+      return 'caafe0';
+  }
+}
+
 const PokemonCard = ({ pokemon }) => (
-  <PokemonCardWrapper>
-    <PokemonNameWrapper>
+  <PokemonCardWrapper color={generateColor(pokemon.type[0])}>
+    <PokemonNameWrapper color={generateColor(pokemon.type[0])}>
       {pokemon.name}
     </PokemonNameWrapper>
     <PokemonInfoWrapper>
