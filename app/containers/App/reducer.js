@@ -9,7 +9,7 @@ import {
 const initialState = fromJS({
   loading: false,
   error: false,
-  data: {},
+  data: false,
 });
 
 function appReducer(state = initialState, action) {

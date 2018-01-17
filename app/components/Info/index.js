@@ -1,31 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingIndicator from 'components/LoadingIndicator';
-import List from 'components/List';
-import ListItem from 'components/ListItem';
-import GeneralInfo from 'components/GeneralInfo';
-
+import PokemonList from 'components/PokemonList';
 
 function Info({ loading, error, data }) {
   if (loading) {
-    return <List component={LoadingIndicator} />;
+    return <LoadingIndicator />;
   }
-  
+
   if (error !== false) {
     const ErrorComponent = () => (
-      <ListItem item={'Something went wrong, please try again!'} />
+      <div>Something went wrong</div>
     );
+
     return <List component={ErrorComponent} />;
   }
-  
+
   if (data !== false) {
-    return <GeneralInfo name={data.name}/>;
+    return (
+      <div>
+        <PokemonList pokemons={data.pokemon} />
+      </div>
+    );
   }
-  
+
   return null;
 }
 
-GeneralInfo.propTypes = {
+Info.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.any,
   data: PropTypes.any,

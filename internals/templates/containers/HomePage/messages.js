@@ -7,7 +7,7 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   header: {
-    id: 'boilerplate.components.Header.header',
-    defaultMessage: 'POKéDEX',
-  }
+    id: 'app.components.HomePage.header',
+    defaultMessage: 'This is HomePage component!',
+  },
 });
