@@ -243,9 +243,7 @@
     "semantic-ui-react": "^0.77.2",
     "styled-components": "2.0.0",
     "warning": "3.0.0",
-    "whatwg-fetch": "2.0.3"
-  },
-  "devDependencies": {
+    "whatwg-fetch": "2.0.3",
     "add-asset-html-webpack-plugin": "2.0.1",
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
