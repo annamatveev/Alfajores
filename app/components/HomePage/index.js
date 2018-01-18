@@ -6,7 +6,7 @@ import Header from 'components/Header';
 import styled from 'styled-components';
 
 const HomePageWrapper = styled.div`
-   min-height: 100vh;
+   min-height: 80vh;
 `;
 
 
