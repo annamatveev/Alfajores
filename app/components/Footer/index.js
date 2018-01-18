@@ -7,9 +7,10 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex; 
   justify-content: space-between;
-  padding: 20px 50px 30px 50px;
+  padding: 20px 40px 20px 50px;
   margin-top: 20px;
   border-top: 1px solid gray;
+  font-size: 13px;
 `;
 
 const Footer = () => (

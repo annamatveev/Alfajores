@@ -4,6 +4,12 @@ import { Helmet } from 'react-helmet';
 import Info from "../../components/Info";
 import PropTypes from 'prop-types';
 import Header from 'components/Header';
+import styled from 'styled-components';
+
+const HomePageWrapper = styled.div`
+   min-height: 100vh;
+`;
+
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -20,7 +26,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     };
 
     return (
-      <article>
+      <HomePageWrapper>
         <Helmet>
           <meta name="description" content="A React.js Boilerplate application homepage" />
         </Helmet>
@@ -28,7 +34,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <div>
           <Info {...GOTDataListProps}/>
         </div>
-      </article>
+      </HomePageWrapper>
     );
   }
 }
