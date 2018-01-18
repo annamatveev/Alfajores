@@ -22,7 +22,7 @@ const Footer = () => (
       <FormattedMessage
         {...messages.authorMessage}
         values={{
-          author: <a href="https://twitter.com/annamatveev">Anna Matveev</a>,
+          author: <a href="https://github.com/annamatveev">Anna Matveev</a>,
         }}
       />
     </section>
